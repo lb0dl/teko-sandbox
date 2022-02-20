@@ -7,12 +7,13 @@ package ch.teko.lb.gpr.algorithms;
  * Element nun vor dem größeren liegt. Durch rekursiven Aufruf der Methode wird der Schleifendurchlauf
  * erneut gestartet bis eine aufsteigende Sortierung vorliegt.
  */
-public class BubbleSort {
+public class BubbleSort implements ISortable {
 
     // Zu sortierendes Array
     int[] zuSortieren = {98, 82, 32, 564, 45, 245, 29, 312, 76, 3342, 23, 86, 12, 3, 934580};
 
-    public int[] sort() {
+    @Override
+    public int[] sortiere() {
         int k;
         for (int i = 0; i < zuSortieren.length - 1; i++) {
             // wenn Element an Position i kleiner ist als das nächste, fahren wir weiter
@@ -24,7 +25,7 @@ public class BubbleSort {
             zuSortieren[i] = zuSortieren[i + 1];
             zuSortieren[i + 1] = k;
             // rekursiver Aufruf, bis das grösste Element an letzter Stelle im Array ist
-            sort();
+            sortiere();
         }
         return zuSortieren;
     }
@@ -32,7 +33,7 @@ public class BubbleSort {
     public static void main(String[] args) {
 
         BubbleSort sorter = new BubbleSort();
-        int[] sortiertesArray = sorter.sort();
+        int[] sortiertesArray = sorter.sortiere();
 
         // Iteration über das sortierte Array
         for (int i = 0; i < sortiertesArray.length; i++) {
